@@ -45,12 +45,34 @@ class PolyTreeNode
         child_node.parent = nil 
     end
 
+    def inspect
+        @value.inspect
+    end
+
     def dfs(target) #depth first search, 
         return nil if self.nil?
         return self if self.value == target
         self.children.each do |child|
-            search_result = dfs(child,target)
+            search_result = child.dfs(target)
             return search_result unless search_result.nil?
+        end
+        nil
+    end
+
+    def bfs(target)
+        return self if self.value == target
+        arr = [self]
+
+        while arr.length > 0
+            current_node = arr.pop
+            if current_node.value == target
+                return current_node
+            end
+            
+            current_node.children.each do |child|
+                arr.push(child)
+            end
+            p arr
         end
         nil
     end
