@@ -1,3 +1,4 @@
+require "byebug"
 class PolyTreeNode
 
     attr_reader :children
@@ -60,47 +61,20 @@ class PolyTreeNode
     end
 
     def bfs(target)
-        return self if self.value == target
         arr = [self]
 
         while arr.length > 0
-            current_node = arr.pop
+            current_node = arr.shift
             if current_node.value == target
                 return current_node
             end
-            
-            current_node.children.each do |child|
-                arr.push(child)
-            end
-            p arr
+            arr += current_node.children
         end
         nil
     end
 
 end
 
+class KnightPathFinder
 
-    # Haseeb's psuedo
-    # def dfs(root, target)
-    #     return nil if root is nil
-    #     return root if root.value == target
-    #     root.children.each do |child|
-    #         search_result = dfs(child, target)
-    #         return search_result unless search_result.nil?
-    #     end
-    #     nil
-    # end
-
-
-    #     1
-    #    / \
-    #   2   4
-    #  /   / \
-    # 3   5   6
-
-    #node 1 has [node 2,node 4] in children, has value of 1
-    #node 2 has [node 3] in children, has value of 2, parent 1
-    #node 3 has? nil children has val 3, parent 2
-    #node 4 has [node 5, node 6] children and has val 4 parent 1
-    #node 5 has? nil children has val 5, parent 4
-    #node 6 has? nil children has val 6, parent 4
+end
