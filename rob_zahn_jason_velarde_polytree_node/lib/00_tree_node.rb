@@ -75,6 +75,15 @@ class PolyTreeNode
 
 end
 
+#   1
+#  / \
+# 2   3
+
 class KnightPathFinder
 
+
+
+
+
+   
 end
